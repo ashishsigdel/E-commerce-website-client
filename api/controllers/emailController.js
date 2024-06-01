@@ -15,19 +15,11 @@ export const sendEmail = (data, req, res, next) => {
     try {
       // send mail with defined transport object
       const info = await transporter.sendMail({
-        from: '"PrimeBazaar👻" <abc@gmail.com>', // sender address
+        from: '"PrimeBazaar" <abc@gmail.com>', // sender address
         to: data.to, // list of receivers
         subject: data.subject, // Subject line
         text: data.text, // plain text body
         html: data.htm, // html body
-      });
-
-      console.log("Message sent: %s", info.messageId);
-
-      res.status(200).json({
-        success: true,
-        message: "Email sent successfully",
-        data: info,
       });
     } catch (error) {
       console.error("Error sending email:", error);
